@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='container'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed md-show fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block field'
+            type='text' />
+          <div id='toc'>
+              <a
+                href='#getOutput'
+                class='block bold'>
+                getOutput
+              </a>
+              <a
+                href='#setACoefficients'
+                class='block bold'>
+                setACoefficients
+              </a>
+              <a
+                href='#setBCoefficients'
+                class='block bold'>
+                setBCoefficients
+              </a>
+              <a
+                href='#setInput'
+                class='block bold'>
+                setInput
+              </a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        <div class='px2'>
+<div class='py1'><section class='py2 clearfix'>
+  <h2 id='getOutput' class='mt0'>
+    getOutput<span class='gray'></span>
+  </h2>
+  <p>Get the output signal</p>
+
+      <h4>Returns</h4>
+      <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code></code>
+      :
+      <div class='force-inline'>
+        <p>the filtered signal</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='setACoefficients' class='mt0'>
+    setACoefficients<span class='gray'>(a)</span>
+  </h2>
+  <p>Set the array of &apos;a&apos; coefficients. Must be padded by an additional &quot;1.0&quot; because
+this set of coefficient will be addressed at it index &quot;1&quot; ( and not &quot;0&quot;)</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code> or <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code> <strong>a</strong>
+          :
+          <div class='force-inline'>
+            <p>the &apos;a&apos; coeficients</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='setBCoefficients' class='mt0'>
+    setBCoefficients<span class='gray'>(b)</span>
+  </h2>
+  <p>Set the array of &apos;b&apos; coefficients</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code> or <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code> <strong>b</strong>
+          :
+          <div class='force-inline'>
+            <p>the &apos;b&apos; coeficients</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='setInput' class='mt0'>
+    setInput<span class='gray'>(signal)</span>
+  </h2>
+  <p>Set the input signal. Will also reset the output to null.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array">Float32Array</a></code> <strong>signal</strong>
+          :
+          <div class='force-inline'>
+            <p>the signal</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
