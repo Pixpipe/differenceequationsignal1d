@@ -162,14 +162,7 @@
     
     var sp = new SpectrumPlot2.SpectrumPlot2( "chartDiv", 400, 300 );
     var signal = edf.getPhysicalSignal(signalIndex, recordIndex);
-    
-    // the foo object is part of our differenceequationsignal1d module
-    var filter = new differenceequationsignal1d.DifferenceEquationSignal1D();
-    filter.setInput( signal );
-    filter.setACoefficients( a );
-    filter.setBCoefficients( b );
-    filter.run();
-    var filteredSignal = filter.getOutput();
+    var filteredSignal = filterTheSignal(signal, true);
     
     //var signal = edf.getPhysicalSignalConcatRecords(0, 0, 1);
     var redIndex = sp.addSpectrum( 
@@ -185,8 +178,30 @@
     )
     
     sp.setLabels();
-    
     sp.draw();
+  }
+  
+  
+  function filterTheSignal( signal, applyBackward=false ){
+    
+    // the foo object is part of our differenceequationsignal1d module
+    var filter = new differenceequationsignal1d.DifferenceEquationSignal1D();
+    filter.setInput( signal );
+    filter.setACoefficients( a );
+    filter.setBCoefficients( b );
+    filter.run();
+    var signal2 = filter.getOutput();
+    
+    if(!applyBackward)
+      return signal2;
+    
+    signal2.reverse();
+    filter.setInput( signal2 );
+    filter.setACoefficients( a );
+    filter.setBCoefficients( b );
+    filter.run();
+    var signal3 = filter.getOutput();
+    return signal3.reverse();
   }
 
   </script>
