@@ -87,6 +87,14 @@
       <img src="https://raw.githubusercontent.com/Pixpipe/differenceequationsignal1d/master/images/definition.png" alt="" /><br />
       where <em>x</em> is the input signal, <em>y</em> is the output signal, <em>b</em> and <em>a</em> are coefficients.</p>
       <p>
+        <select id="filterSelectHiPass">
+          <option value="none">No hi-pass</option>
+          <option value="hipass0_5">Hi pass 0.5Hz</option>
+          <option value="hipass1">Hi pass 1Hz</option>
+          <option value="hipass5">Hi pass 5Hz</option>
+          <option value="hipass10">Hi pass 10Hz</option>
+        </select>
+        
         <select id="filterSelectLoPass">
           <option value="none">No lo-pass</option>
           <option value="lopass15">Low pass 15Hz</option>
@@ -95,13 +103,6 @@
           <option value="lopass40">Low pass 40Hz</option>
         </select>
         
-        <select id="filterSelectHiPass">
-          <option value="none">No hi-pass</option>
-          <option value="hipass0_5">Hi pass 0.5Hz</option>
-          <option value="hipass1">Hi pass 1Hz</option>
-          <option value="hipass5">Hi pass 5Hz</option>
-          <option value="hipass10">Hi pass 10Hz</option>
-        </select>
       </p>
       
       Record Index <input id='slider' type="range" value="0"> <span id="recordIndexPrint">0</span>
