@@ -23,9 +23,24 @@
             type='text' />
           <div id='toc'>
               <a
+                href='#disableBackwardSecondPass'
+                class='block bold'>
+                disableBackwardSecondPass
+              </a>
+              <a
+                href='#enableBackwardSecondPass'
+                class='block bold'>
+                enableBackwardSecondPass
+              </a>
+              <a
                 href='#getOutput'
                 class='block bold'>
                 getOutput
+              </a>
+              <a
+                href='#run'
+                class='block bold'>
+                run
               </a>
               <a
                 href='#setACoefficients'
@@ -48,6 +63,22 @@
       <div class='fix-margin-3'>
         <div class='px2'>
 <div class='py1'><section class='py2 clearfix'>
+  <h2 id='disableBackwardSecondPass' class='mt0'>
+    disableBackwardSecondPass<span class='gray'></span>
+  </h2>
+  <p>Will not process the signal backwards as a second pass.
+Depending on the coefficients, the output may not be in phase with the input.</p>
+
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='enableBackwardSecondPass' class='mt0'>
+    enableBackwardSecondPass<span class='gray'></span>
+  </h2>
+  <p>Will process the signal backwards as a second pass, using the same coeficients.
+This is to make sure the output remain in phase with the input</p>
+
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='getOutput' class='mt0'>
     getOutput<span class='gray'></span>
   </h2>
@@ -60,6 +91,13 @@
         <p>the filtered signal</p>
 
       </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='run' class='mt0'>
+    run<span class='gray'></span>
+  </h2>
+  <p>Launch the filtering. In the end, get the output using the method <code>.getOutput()</code></p>
+
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
   <h2 id='setACoefficients' class='mt0'>

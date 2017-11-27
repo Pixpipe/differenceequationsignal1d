@@ -13,6 +13,7 @@ class DifferenceEquationSignal1D {
     this._outputSignal = null;
     this._aCoefficients = null;
     this._bCoefficients = null;
+    this._enableBackwardSecondPass = false;
   }
   
   
@@ -54,19 +55,38 @@ class DifferenceEquationSignal1D {
   }
 
 
+  /**
+  * Will process the signal backwards as a second pass, using the same coeficients.
+  * This is to make sure the output remain in phase with the input
+  */
+  enableBackwardSecondPass(){
+    this._enableBackwardSecondPass = true;
+  }
+
+  
+  /**
+  * Will not process the signal backwards as a second pass.
+  * Depending on the coefficients, the output may not be in phase with the input.
+  */
+  disableBackwardSecondPass(){
+    this._enableBackwardSecondPass = false;
+  }
+
+
+  /**
+  * Launch the filtering. In the end, get the output using the method `.getOutput()`
+  */
   run(){
     var that = this;
-    this._outputSignal = new Float32Array( this._inputSignal.length ).fill(0);
+    var out = new Float32Array( this._inputSignal.length ).fill(0);
     
     // some shortcuts
     var x = this._inputSignal;
-    var y = this._outputSignal;
+    var y = out;
     var b = this._bCoefficients;
     var a = this._aCoefficients;
     var M = b.length - 1;
     var N = a.length - 1;
-    
-    
     
     function getOutputAt( n ){
       var coef = "";
@@ -89,9 +109,23 @@ class DifferenceEquationSignal1D {
       return valueAtN;
     }
     
-    for(var i=0; i<this._outputSignal.length; i++){
-      this._outputSignal[i] = getOutputAt(i);
+    for(var i=0; i<out.length; i++){
+      out[i] = getOutputAt(i);
     }
+    
+    if( this._enableBackwardSecondPass ){
+      out.reverse();
+      x = out;
+      out = new Float32Array( this._inputSignal.length ).fill(0);
+      y = out;
+      
+      for(var i=0; i<out.length; i++){
+        out[i] = getOutputAt(i);
+      }
+      out.reverse();
+    }
+    
+    this._outputSignal = out;
   }
   
 

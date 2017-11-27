@@ -158,6 +158,7 @@ var DifferenceEquationSignal1D = function () {
     this._outputSignal = null;
     this._aCoefficients = null;
     this._bCoefficients = null;
+    this._enableBackwardSecondPass = false;
   }
 
   /**
@@ -206,14 +207,41 @@ var DifferenceEquationSignal1D = function () {
     value: function getOutput() {
       return this._outputSignal;
     }
+
+    /**
+    * Will process the signal backwards as a second pass, using the same coeficients.
+    * This is to make sure the output remain in phase with the input
+    */
+
+  }, {
+    key: "enableBackwardSecondPass",
+    value: function enableBackwardSecondPass() {
+      this._enableBackwardSecondPass = true;
+    }
+
+    /**
+    * Will not process the signal backwards as a second pass.
+    * Depending on the coefficients, the output may not be in phase with the input.
+    */
+
+  }, {
+    key: "disableBackwardSecondPass",
+    value: function disableBackwardSecondPass() {
+      this._enableBackwardSecondPass = false;
+    }
+
+    /**
+    * Launch the filtering. In the end, get the output using the method `.getOutput()`
+    */
+
   }, {
     key: "run",
     value: function run() {
-      this._outputSignal = new Float32Array(this._inputSignal.length).fill(0);
+      var out = new Float32Array(this._inputSignal.length).fill(0);
 
       // some shortcuts
       var x = this._inputSignal;
-      var y = this._outputSignal;
+      var y = out;
       var b = this._bCoefficients;
       var a = this._aCoefficients;
       var M = b.length - 1;
@@ -237,9 +265,23 @@ var DifferenceEquationSignal1D = function () {
         return valueAtN;
       }
 
-      for (var i = 0; i < this._outputSignal.length; i++) {
-        this._outputSignal[i] = getOutputAt(i);
+      for (var i = 0; i < out.length; i++) {
+        out[i] = getOutputAt(i);
       }
+
+      if (this._enableBackwardSecondPass) {
+        out.reverse();
+        x = out;
+        out = new Float32Array(this._inputSignal.length).fill(0);
+        y = out;
+
+        for (var i = 0; i < out.length; i++) {
+          out[i] = getOutputAt(i);
+        }
+        out.reverse();
+      }
+
+      this._outputSignal = out;
     }
   }]);
   return DifferenceEquationSignal1D;
