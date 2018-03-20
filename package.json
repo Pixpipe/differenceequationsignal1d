@@ -5,17 +5,16 @@
   "repository": "jonathanlurie/differenceequationsignal1d",
   "moduleName": "differenceequationsignal1d",
   "entry": "src/main.js",
-  "main": "dist/differenceequationsignal1d.cjs.js",
-  "commonjs": "dist/differenceequationsignal1d.cjs.js",
-  "module": "dist/differenceequationsignal1d.module.js",
-  "browser": "dist/differenceequationsignal1d.umd.js",
+  "main": "dist/differenceequationsignal1d.umd.js",
+  "cjs": "dist/differenceequationsignal1d.cjs.js",
+  "umd": "dist/differenceequationsignal1d.umd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "dev": "serve . & rollup -w -c rollup.config.dev.js",
     "build-min": "npm run build && printf \"// Build date: $(date '+%Y-%m%-dT%H:%M:%S')\n\n\" > dist/differenceequationsignal1d.umd.min.js && cat header.txt >> dist/differenceequationsignal1d.umd.min.js && google-closure-compiler-js dist/differenceequationsignal1d.umd.js >> dist/differenceequationsignal1d.umd.min.js",
     "doc": "documentation src/main.js -o ./doc/ -f html",
-    "all" : "npm run build; npm run build-min; npm run doc"
+    "all": "npm run build; npm run build-min; npm run doc"
   },
   "author": "Jonathan Lurie",
   "license": "MIT",
@@ -23,15 +22,17 @@
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "documentation": "^3.0.4",
-    "google-closure-compiler-js": "^20170218.0.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.0.2",
+    "documentation": "^6.1.0",
+    "google-closure-compiler-js": "^20180204.0.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.1.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-node-globals": "^1.2.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
     "serve": "^6.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "npm-check-updates": "^2.14.1"
+  }
 }
