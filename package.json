@@ -31,8 +31,5 @@
     "rollup-plugin-node-globals": "^1.2.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "serve": "^6.3.1"
-  },
-  "dependencies": {
-    "npm-check-updates": "^2.14.1"
   }
 }
